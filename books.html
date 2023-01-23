@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Book Database</title>
+   
+</head>
+<body>
+    <form id="books" action="/books" method="get">
+        <label for="search">ISBN (10 or 13 characters)</label>
+        <input type="text" name="isbn" id="isbn" required minlength="10" , maxlength="13">
+        <button class="submit">Get Book</button><br />
+        <br />
+        <br />
+    </form>
+
+    <div class="results">
+        <section>
+        </section>
+
+    </div>
+
+
+    <p id="demo"></p>
+
+</body>
+    </html>
