@@ -60,6 +60,7 @@ const server = http.createServer((req, res) => {
               var $pub_var = obj.book.publisher;
               var $image = obj.book.image;
               var $title_long = obj.book.title_long;
+              var $title = obj.book.title;
               var $edition = obj.book.edition;
               var e = new Date(obj.book.date_published);
               var year_var = (e.getUTCFullYear());
@@ -70,7 +71,7 @@ const server = http.createServer((req, res) => {
               var $isbn = obj.book.isbn;
               var $binding = obj.book.binding;
   
-              post = { publisher: $pub_var, image: $image, title_long: $title_long, edition: $edition, authors1: $authors1, authors2: $authors2, isbn13: $isbn13, isbn: $isbn, binding: $binding, yr_published: str_year };
+              post = { publisher: $pub_var, image: $image, title_long: $title_long, title: $title, edition: $edition, authors1: $authors1, authors2: $authors2, isbn13: $isbn13, isbn: $isbn, binding: $binding, yr_published: str_year };
   
   
   
