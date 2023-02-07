@@ -8,6 +8,8 @@ const mysql = require('mysql2');
 const https = require('https');
 const hostname = '127.0.0.1';
 
+require('dotenv').config();
+
 
 const form = fs.readFileSync(path.join(__dirname, "public", "books.html"));
 
@@ -60,7 +62,6 @@ const server = http.createServer((req, res) => {
               var $pub_var = obj.book.publisher;
               var $image = obj.book.image;
               var $title_long = obj.book.title_long;
-              var $title = obj.book.title;
               var $edition = obj.book.edition;
               var e = new Date(obj.book.date_published);
               var year_var = (e.getUTCFullYear());
@@ -71,17 +72,23 @@ const server = http.createServer((req, res) => {
               var $isbn = obj.book.isbn;
               var $binding = obj.book.binding;
   
-              post = { publisher: $pub_var, image: $image, title_long: $title_long, title: $title, edition: $edition, authors1: $authors1, authors2: $authors2, isbn13: $isbn13, isbn: $isbn, binding: $binding, yr_published: str_year };
+              post = { publisher: $pub_var, image: $image, title_long: $title_long, edition: $edition, authors1: $authors1, authors2: $authors2, isbn13: $isbn13, isbn: $isbn, binding: $binding, yr_published: str_year };
   
   
   
               const connection = mysql.createConnection({
-                  host: 'ls-25e22aea68953870fcc0d34c723d0d60e8a81892.cvwgk0rnptsm.us-east-1.rds.amazonaws.com',
-                  database: 'dbmaster',
-                  user: 'dbmasteruser',
-                  password: 'Darwin01$',
+                 host: process.env.HOST_ID,
+                 database: process.env.DB_ID,
+                 user: process.env.USER_ID,
+                 password: process.env.USER_KEY,
+
+                 // host: 'ls-25e22aea68953870fcc0d34c723d0d60e8a81892.cvwgk0rnptsm.us-east-1.rds.amazonaws.com',
+                 // database: 'dbmaster',
+                 // user: 'dbmasteruser',
+                 // password: 'Darwin01$',
+
                   //   host: 'localhost',
-                  //       database: 'books',
+                  //       database: 'dbmaster',
                   //   user: 'tmbattey',
                   //     password: 'darwin',
               });
